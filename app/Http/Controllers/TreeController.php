@@ -13,7 +13,7 @@ class TreeController extends Controller
         $Departments = Departments::where('parent_id', '=', 0)->get();
         $tree='<ul id="browser" class="jstree"></li>';
         foreach ($Departments as $Department) {
-            $tree .='<li  class="tree-view closed"><a onclick="usr('.$Department->department_id.')" class="tree-name">'.$Department->dep_name.'</a>';
+            $tree .='<li  class="tree-view closed"><a onclick="getDepUsers('.$Department->department_id.')" class="tree-name">'.$Department->dep_name.'</a>';
             if(count($Department->childs)) {
                 $tree .=$this->childView($Department);
             }
@@ -28,10 +28,10 @@ class TreeController extends Controller
         $html ='<ul>';
         foreach ($Department->childs as $arr) {
             if(count($arr->childs)){
-                $html .='<li class="tree-view closed"><a onclick="usr('.$arr->department_id.')" class="tree-name">'.$arr->dep_name.'</a>';
+                $html .='<li class="tree-view closed"><a onclick="getDepUsers('.$arr->department_id.')" class="tree-name">'.$arr->dep_name.'</a>';
                 $html.= $this->childView($arr);
             }else{
-                $html .='<li class="tree-view"><a onclick="usr('.$arr->department_id.')" class="tree-name" >'.$arr->dep_name.'</a>';
+                $html .='<li class="tree-view"><a onclick="getDepUsers('.$arr->department_id.')" class="tree-name" >'.$arr->dep_name.'</a>';
                 $html .="</li>";
             }
         }
