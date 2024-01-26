@@ -1,5 +1,5 @@
 # Category-Manager
-A Laravel implementation of nested departments for users and: soon to implement categories for pages
+A Laravel implementation of nested Departments for Users, and: soon to implement Categories for Pages
 
 ## Description
 
